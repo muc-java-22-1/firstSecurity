@@ -11,16 +11,21 @@ public class DummyController {
         return "Hallo " + name;
     }
 
-    @GetMapping("/public")
+    @GetMapping("/publicpage")
     public String publicEndpoint() {
         return "public";
     }
-    @GetMapping("/user")
+    @GetMapping("/userpage")
     public String userEndpoint() {
         return "user";
     }
-    @GetMapping("/admin")
+    @GetMapping("/adminpage")
     public String adminEndpoint() {
         return "admin";
+    }
+
+    @GetMapping("/authenticated")
+    public String authenticatedEndpoint() {
+        return "authenticated";
     }
 }
