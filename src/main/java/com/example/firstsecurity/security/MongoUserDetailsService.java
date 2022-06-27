@@ -25,7 +25,7 @@ public class MongoUserDetailsService implements UserDetailsService {
         var tmp = repository.findByUsername(username);
         System.out.println(tmp);
         var tmp2 = tmp
-                .map(user -> new User(user.getUsername(), user.getPassword(), List.of(new SimpleGrantedAuthority("ROLE_USER"))))
+                .map(user -> new User(user.getUsername(), user.getPassword(), user.getAuthorities()))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         System.out.println(tmp2);
         return tmp2;

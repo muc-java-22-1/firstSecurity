@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,4 +20,12 @@ public class TestUser {
     private String username;
     private String password;
 
+    private List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+    public void setAuthorities(List<SimpleGrantedAuthority> authorities){
+        for(SimpleGrantedAuthority auth: authorities){
+            System.out.println(auth.toString());
+            this.authorities.add(new SimpleGrantedAuthority("ROLE_" + auth));
+        }
+    }
 }
